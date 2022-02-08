@@ -73,26 +73,4 @@ const stats = {
 const half = ({ max, min }) => (max + min) / 2.0;
 // Only change code above this line
 
-// =================================================================================
-// Используйте литеральный синтаксис шаблона с обратными кавычками
-// для создания массива строк элемента списка
-
-const result = {
-  success: ["max-length", "no-amd", "prefer-arrow-functions"],
-  failure: ["no-var", "var-on-top", "linebreak"],
-  skipped: ["no-extra-semi", "no-dup-keys"],
-};
-function makeList(arr) {
-  // Only change code below this line
-  let failureItems = [];
-  failureItems = arr.map((el) => {
-    return `<li class="text-warning">${el}</li>`;
-  });
-  // Only change code above this line
-
-  return failureItems;
-}
-
-const failuresList = makeList(result.failure);
-
-console.log("===> Create an array of list with literal syntax =", failuresList);
+console.log("===> Destructuring Assignment max=", max, ", min=", min);
