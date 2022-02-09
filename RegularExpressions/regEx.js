@@ -106,3 +106,9 @@ let quoteSample10 = "3 blind mice.";
 let myRegex10 = /[^aeiou0-9]/gi; // Change this line
 let result10 = quoteSample10.match(myRegex10); // Change this line
 console.log("===> Create a negated character set=", result10);
+
+// =================================================================================
+// найти символы, которые встречаются один или несколько раз +
+let difficultSpelling11 = "Mississippi";
+let myRegex11 = /s+/gi; // Change this line
+let result11 = difficultSpelling11.match(myRegex11);
