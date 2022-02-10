@@ -112,3 +112,172 @@ console.log("===> Create a negated character set=", result10);
 let difficultSpelling11 = "Mississippi";
 let myRegex11 = /s+/gi; // Change this line
 let result11 = difficultSpelling11.match(myRegex11);
+
+// =================================================================================
+// параметр, который соответствует символам, встречающимся ноль или более раз.
+// Символ для этого — звездочка или звездочка: *.
+
+// Only change code below this line
+let chewieQuote = "Aaaaaaaaaaaaaaaarrrgh!";
+let chewieRegex = /Aa*/; // Change this line
+// Only change code above this line
+
+let result12 = chewieQuote.match(chewieRegex); // Aaaaaaaaaaaaaaaa
+
+// =================================================================================
+// Find Characters with Lazy Matching
+// выражение /t[a-z]*i/к строке "titanic" возвращает ["titani"]
+// Если же использовать ? символ, выражение /t[a-z]*?i/ возвращает ["ti"].
+// подстановочный знак . в регулярном выражении соответствует любому символу
+
+let text13 = "<h1>Winter is coming</h1>";
+let myRegex13 = /<.*?>/; // Change this line
+let result13 = text13.match(myRegex13);
+
+// =================================================================================
+// находим любое количество букв "C" в строке
+let reCriminals131 = /C+/; // Change this line
+// находим любое количество букв "C"или "c" (в любом регистре) в строке
+let reCriminals132 = /C+/i; // Change this line
+
+// =================================================================================
+// Поиск с начала строки - ^
+// НЕ путать с [^] - внутри набора ^ - обозначает отрицание
+let rickyAndCal14 = "Cal and Ricky both like racing.";
+let calRegex14 = /^Cal/; // Change this line
+let result14 = calRegex14.test(rickyAndCal14);
+
+// =================================================================================
+// Поиск (совпадение) с шаблонами конечных строк $
+// искать конец строки, используя символ доллара $ в конце регулярного выражения.
+
+let caboose15 = "The last car on a train is the caboose";
+let lastRegex15 = /caboose$/; // Change this line
+let result15 = lastRegex15.test(caboose15);
+
+// =================================================================================
+// Сопоставьте все буквы и цифры
+// [A-Za-z0-9_] - это \w - найдет одну букву/цифру/_
+// /[A-Za-z0-9_]+/ - это /\w+/ - найдет все буквы/цифры/_ до пробела
+// /\w/g - найдет все буквы/цифры/_ в строке
+
+let quoteSample16 = "The five boxing wizards jump quickly.";
+let alphabetRegexV216 = /\w/g; // Change this line
+let result16 = quoteSample16.match(alphabetRegexV216).length;
+console.log(
+  "===> Count all letters = ",
+  result16,
+  "arr=",
+  quoteSample16.match(alphabetRegexV216)
+);
+
+// =================================================================================
+// Сопоставьте все кроме букв/цифр/_
+// /[^A-Za-z0-9_]/ соответствует /\W/ ищет до первого несовпадения
+// /[^A-Za-z0-9_]/g соответствует /\W/g - ищет все несовпадения в строке
+// /[^A-Za-z0-9_]+/g соответствует /\W+/g - ищет первое несовпадение с любым ко-вом символов
+let quoteSample17 = "The .! five boxing wizards jump quickly.";
+let nonAlphabetRegex17 = /\W/g; // Change this line
+let result17 = quoteSample17.match(nonAlphabetRegex17).length;
+
+console.log(
+  "===> Count all without letters = ",
+  result17,
+  "arr=",
+  quoteSample17.match(nonAlphabetRegex17)
+);
+
+// =================================================================================
+// поиск цифровых символов — \d (ищет один символ любого числа от нуля до девяти)
+// /[0-9]/ соответствует /\d/
+let movieName18 = "2001: A Space Odyssey";
+let numRegex18 = /\d/g; // Change this line
+let result18 = movieName18.match(numRegex18).length; // 4
+
+// =================================================================================
+// поиск не цифровых символов — \D (ищет один символ любого не числа)
+// /[^0-9]/ соответствует /\D/
+let movieName19 = "2001: A Space Odyssey";
+let noNumRegex19 = /\D/g; // Change this line
+let result19 = movieName19.match(noNumRegex19).length;
+
+// =================================================================================
+// проверить все имена пользователей в базе данных
+// 1. Имена пользователей могут использовать только буквенно-цифровые символы.
+// 2. Единственные цифры в имени пользователя должны быть в конце. В конце их может
+//    быть ноль или больше. Имя пользователя не может начинаться с цифры.
+// 3. Буквы имени пользователя могут быть строчными и прописными.
+// 4. Имя пользователя должно быть не менее двух символов. Двухсимвольное имя пользователя
+//    может использовать только буквы алфавита в качестве символов.
+let username20 = "Ja1TyuF9888"; // JackOfAllTrades007
+let userCheck20 = /^[a-zA-Z][a-zA-Z]+[0-9]*$|^[a-zA-Z]\d\d+$/; // Change this line /^[a-zA-Z][a-zA-Z]+[0-9]$/g
+let result20 = userCheck20.test(username20);
+
+console.log(
+  "===> Check user name =",
+  result20,
+  "string =",
+  username20.match(userCheck20)
+);
+
+// /^[a-zA-Z][a-zA-Z]+[0-9]*$/
+// ^[a-zA-Z] - начало строки с буквы
+// [a-zA-Z]+ - вторая только буква и после 2-й буквы любое количество букв
+// [0-9]*$ - в конце могут быть только цифры (любое количество)
+// | - или
+// ^[a-zA-Z] - начало строки с 1-й буквы
+// \d\d+$ - минимум 2 цифры в конце строки
+
+// /^[a-z]([0-9]{2,}|[a-z]+\d*)$/i
+// ^ - start of input
+// [a-z] - first character is a letter
+// [0-9]{2,0} - ends with two or more numbers
+// | - or
+// [a-z]+ - has one or more letters next
+// \d* - and ends with zero or more numbers
+// $ - end of input
+// i - ignore case of input
+
+// =================================================================================
+// можно сопоставлять пробелы или пробелы между буквами.
+// Искать пробелы \s в т.ч. возврата каретки (\r), табуляции (\t),
+// перевода страницы (\f) и новой строки (\n), вертикальная табуляция (\v).
+// т.е. \s - это пробелы и [ \r\t\f\n\v]
+
+let sample21 = "Whitespace is important in separating words";
+let countWhiteSpace21 = /\s/g; // Change this line
+let result21 = sample21.match(countWhiteSpace21);
+
+// =================================================================================
+// искать все, кроме пробелов
+// \S соответствует [^ \r\t\f\n\v]
+let sample22 = "Whitespace is important in separating words";
+let countNonWhiteSpace22 = /\S/g; // Change this line
+let result22 = sample22.match(countNonWhiteSpace22);
+
+// =================================================================================
+//  указать min и max количество вхождений паттерна с помощью спецификаторов {min, max}
+// /a{3,5}h/ - здесь "a" должно встретитья от 3 до 5 раз перед буквой "h"
+
+let ohStr23 = "Ohhh no";
+let ohRegex23 = /Oh{3,6}\sno/; // Change this line
+let result23 = ohRegex23.test(ohStr23);
+
+// =================================================================================
+// Укажите только минимальное количество совпадений {min, }
+// /ha{3,}h/ - буква "a" должна встретится в шаблоне минимум 3 раза подряд
+let haStr24 = "Hazzzzah";
+let haRegex24 = /Haz{4,}ah/; // Change this line
+let result24 = haRegex24.test(haStr24);
+
+// =================================================================================
+// Указать можно точное количество вхождений {3}
+let timStr25 = "Timmmmber";
+let timRegex25 = /Tim{4}ber/; // Change this line
+let result25 = timRegex25.test(timStr25);
+
+// =================================================================================
+// Проверить шаблон, который может существовать или не существовать [шаблон]? / символ?
+let favWord26 = "favorite";
+let favRegex26 = /favou?rite/; // Change this line
+let result26 = favRegex26.test(favWord26);
