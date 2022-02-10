@@ -281,3 +281,39 @@ let result25 = timRegex25.test(timStr25);
 let favWord26 = "favorite";
 let favRegex26 = /favou?rite/; // Change this line
 let result26 = favRegex26.test(favWord26);
+
+// Lookaheads — это шаблоны, которые сообщают, что нужно смотреть вперед в вашей строке
+// просматривает всю строку
+// Положительный просмотр вперед (?=...) - т.е. должно соответствовать ...
+// Отрицательный просмотр вперед (?!...) - т.е. должно отсутствовать
+// "abc123" /(?=\w{3,6})(?=\D*\d)/ - вначале проверка строки будет на (?=\w{3,6}),
+// потом на єту же строку проверят на (?=\D*\d), и если оба шаблона верні, тогда true
+
+let sampleWord27 = "astronaut";
+let pwRegex27 = /(?=\w{6})(?=\w*\d{2})/; // Change this line
+let result27 = pwRegex27.test(sampleWord27);
+
+// =================================================================================
+// Проверьте наличие смешанной группировки символов (...)
+// найти Penguinили Pumpkinв строке /P(engu|umpk)in/
+
+let myString = "Eleanor Roosevelt";
+let myRegex = /(Franklin|Eleanor).*Roosevelt/; // Change this line
+let result = myRegex.test(myString); // Change this line
+// After passing the challenge experiment with myString and see how the grouping works
+
+// =================================================================================
+// Повторное использование шаблонов с помощью групп захвата
+// Найти /row row row/, но что, если вы не знаете повторяющееся конкретное слово?
+// Группы захвата можно использовать для поиска повторяющихся подстрок.
+// https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/regular-expressions/reuse-patterns-using-capture-groups
+// /(\w+) \1 \1/ - соответствует слову, которое встречается трижды через пробел
+// .match()метода для строки вернет массив с совпадающей подстрокой вместе с ее захваченными группами.
+
+// выражение должно совпадать со строкой 42 42 42, но не должно с 42 42 42 42
+// /(\d+)\s\1\s\1/ - любое совпадение в строке, например 42 42 42 42
+// /^(\d+)\s\1\s\1$/ - тут определяем начало строки и ее конец.
+// /s - можно заменить пробелом
+let repeatNum = "42 42 42";
+let reRegex = /^(\d+)\s\1\s\1$/; // Change this line
+let result = reRegex.test(repeatNum);
