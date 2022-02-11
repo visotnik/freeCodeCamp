@@ -297,9 +297,9 @@ let result27 = pwRegex27.test(sampleWord27);
 // Проверьте наличие смешанной группировки символов (...)
 // найти Penguinили Pumpkinв строке /P(engu|umpk)in/
 
-let myString = "Eleanor Roosevelt";
-let myRegex = /(Franklin|Eleanor).*Roosevelt/; // Change this line
-let result = myRegex.test(myString); // Change this line
+let myString28 = "Eleanor Roosevelt";
+let myRegex28 = /(Franklin|Eleanor).*Roosevelt/; // Change this line
+let result28 = myRegex28.test(myString28); // Change this line
 // After passing the challenge experiment with myString and see how the grouping works
 
 // =================================================================================
@@ -314,6 +314,33 @@ let result = myRegex.test(myString); // Change this line
 // /(\d+)\s\1\s\1/ - любое совпадение в строке, например 42 42 42 42
 // /^(\d+)\s\1\s\1$/ - тут определяем начало строки и ее конец.
 // /s - можно заменить пробелом
-let repeatNum = "42 42 42";
-let reRegex = /^(\d+)\s\1\s\1$/; // Change this line
-let result = reRegex.test(repeatNum);
+let repeatNum29 = "42 42 42";
+let reRegex29 = /^(\d+)\s\1\s\1$/; // Change this line
+let result29 = reRegex29.test(repeatNum29);
+
+// =================================================================================
+// https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/regular-expressions/use-capture-groups-to-search-and-replace
+// Используйте группы захвата для поиска и замены
+// можно искать и заменять текст в строке, используя .replace()
+
+// let wrongText = "The sky is silver.";
+// let silverRegex = /silver/;
+// wrongText.replace(silverRegex, "blue");
+// Вызов replaceвернет строку The sky is blue.
+
+// можно получить доступ к группам захвата в строке замены используя ($).
+// "Code Camp".replace(/(\w+)\s(\w+)/, '$2 $1'); вернет Camp Code
+
+let str = "one two three";
+let fixRegex = /(\w+)\s(\w+)\s(\w+)/; // Change this line
+let replaceText = "$3 $2 $1"; // Change this line
+let result = str.replace(fixRegex, replaceText);
+
+
+// =================================================================================
+// Удалить пробелы в начале и конце
+// https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/regular-expressions/remove-whitespace-from-start-and-end
+
+let hello = "   Hello, World!  ";
+let wsRegex = /^\s+|\s+$/g; // Change this line
+let result = hello.replace(wsRegex, ""); // Change this line
