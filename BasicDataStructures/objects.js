@@ -43,7 +43,7 @@ console.log(userActivity);
 // Возвращает текущее значение scannedItemключа в foodsобъекте. Вы можете предположить,
 // что в качестве аргумента для checkInventory.
 
-let foods = {
+let foods1 = {
   apples: 25,
   oranges: 32,
   plums: 28,
@@ -54,7 +54,7 @@ let foods = {
 
 function checkInventory(scannedItem) {
   // Only change code below this line
-  return foods[scannedItem];
+  return foods1[scannedItem];
   // Only change code above this line
 }
 
@@ -64,7 +64,7 @@ console.log(checkInventory("apples"));
 // Используйте ключевое слово delete, чтобы удалить ключи oranges, plums,
 // и strawberriesиз foodsобъекта.
 
-let foods1 = {
+let foods2 = {
   apples: 25,
   oranges: 32,
   plums: 28,
@@ -74,9 +74,52 @@ let foods1 = {
 };
 
 // Only change code below this line
-delete foods1.oranges;
-delete foods1.plums;
-delete foods1.strawberries;
+delete foods2.oranges;
+delete foods2.plums;
+delete foods2.strawberries;
 // Only change code above this line
 
-console.log(foods1);
+console.log(foods2);
+
+// =================================================================================
+// Проверить, есть ли у объекта свойство
+// Одни используют hasOwnProperty() метод: users.hasOwnProperty('Alan'); // вернет true.
+// а другие использует in ключевое слово: 'Alan' in users; // вернет true.
+
+// Чтобы сравнить два массива надо: убедиться что они одного размера,
+// затем убедиться что по всем индексам имеет одинаковые элементы.
+
+let users = {
+  Alan: {
+    age: 27,
+    online: true,
+  },
+  Jeff: {
+    age: 32,
+    online: true,
+  },
+  Sarah: {
+    age: 48,
+    online: true,
+  },
+  // Ryan: {
+  //   age: 19,
+  //   online: true,
+  // },
+};
+
+function isEveryoneHere(userObj) {
+  // Only change code below this line
+  const namesForCompare = ["Alan", "Jeff", "Sarah", "Ryan"];
+  let result = true;
+
+  namesForCompare.forEach((el) => {
+    if (!userObj.hasOwnProperty(el)) {
+      result = false;
+    }
+  });
+  return result;
+  // Only change code above this line
+}
+
+console.log("===> isEveryoneHere =", isEveryoneHere(users));
