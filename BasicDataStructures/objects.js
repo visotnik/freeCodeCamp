@@ -123,3 +123,109 @@ function isEveryoneHere(userObj) {
 }
 
 console.log("===> isEveryoneHere =", isEveryoneHere(users));
+
+// =================================================================================
+// Iterate Through the Keys of an Object with a for...in Statement
+// Мы определили функцию, countOnlineкоторая принимает один аргумент (объект пользователя).
+// Используйте оператор for...in в этой функции, чтобы пройти по объекту пользователей,
+// переданному в функцию, и вернуть количество пользователей, чье online свойство
+// установлено на true.
+
+const usersKeys = {
+  Alan: {
+    online: false,
+  },
+  Jeff: {
+    online: true,
+  },
+  Sarah: {
+    online: false,
+  },
+  Jeffy: {
+    online: true,
+  },
+};
+
+function countOnline(usersObj) {
+  // Only change code below this line
+  let num = 0;
+  for (let user in usersObj) {
+    if (usersObj[user].online === true) num++;
+  }
+  return num;
+  // Only change code above this line
+}
+
+console.log("===> количество пользователей =", countOnline(usersKeys));
+
+// =================================================================================
+// Generate an Array of All Object Keys with Object.keys()
+// Finish writing the getArrayOfUsers function so that it returns an array containing
+// all the properties in the object it receives as an argument.
+
+let usersArray = {
+  Alan: {
+    age: 27,
+    online: false,
+  },
+  Jeff: {
+    age: 32,
+    online: true,
+  },
+  Sarah: {
+    age: 48,
+    online: false,
+  },
+  Ryan: {
+    age: 19,
+    online: true,
+  },
+};
+
+function getArrayOfUsers(obj) {
+  // Only change code below this line
+  return Object.keys(obj);
+  // Only change code above this line
+}
+
+console.log(
+  "===> Generate an Array of All Object Keys =",
+  getArrayOfUsers(usersArray)
+);
+
+// =================================================================================
+// Modify an Array Stored in an Object
+// Take a look at the object we've provided in the code editor. The user object contains
+// three keys. The data key contains five keys, one of which contains an array of friends.
+// From this, you can see how flexible objects are as data structures. We've started
+// writing a function addFriend. Finish writing it so that it takes a user object
+// and adds the name of the friend argument to the array stored in user.data.friends
+// and returns that array.
+
+let userModifyArray = {
+  name: "Kenneth",
+  age: 28,
+  data: {
+    username: "kennethCodesAllDay",
+    joinDate: "March 26, 2016",
+    organization: "freeCodeCamp",
+    friends: ["Sam", "Kira", "Tomo"],
+    location: {
+      city: "San Francisco",
+      state: "CA",
+      country: "USA",
+    },
+  },
+};
+
+function addFriend(userObj, friend) {
+  // Only change code below this line
+  userObj.data.friends.push(friend);
+  return userObj.data.friends;
+  // Only change code above this line
+}
+
+console.log(
+  "===> Modify an Array Stored in an Object =",
+  addFriend(userModifyArray, "Pete")
+);
